@@ -45,7 +45,7 @@
             ?>
         </header>
         <section>
-            <form>
+            <form action="buscar.php" method="get" enctype="application/x-www-form-urlencoded">
                 <input type="search" placeholder="Ingrese un nombre">
                 <input type="submit" value="Buscar Pokemón">
             </form>
