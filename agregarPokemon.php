@@ -5,7 +5,7 @@
 function insertarPokemon($nombre, $tipo, $numero, $imagen, $descripcion){
     require_once ('dataBase.php');
     $query= $conexion->prepare("INSERT INTO pokemones VALUES (' ',?,?,?,?,?)");
-    $query->bind_param('ssiss', $nombre, $tipo, $numero, $imagen, $descripcion);
+    $query->bind_param('issss', $numero, $tipo, $nombre, $descripcion, $imagen);
     $query->execute();
     $conexion->close();
 }

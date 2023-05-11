@@ -5,7 +5,7 @@ function editarPokemon($nombre, $tipo, $numero, $imagen, $descripcion, $id){
     require_once ('dataBase.php');
     $query= $conexion->prepare("UPDATE pokemones
                                 SET nombre = ?, tipo = ?, numero= ?, imagen= ?, descripcion= ?
-                                WHERE id=?");
+                                WHERE idPokemon=?");
     $query->bind_param('ssissi', $nombre, $tipo, $numero, $imagen, $descripcion, $id);
     $query->execute();
     $conexion->close();
