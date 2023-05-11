@@ -7,8 +7,8 @@
 <body>
 <header>
     <h1>Pokedex</h1>
-    <form>
-        <input type=text name="ususario" placeholder="usuario">
+    <form method="post" action="loginProcesar.php">
+        <input type=text name="usuario" placeholder="usuario">
         <input type=text name="password" placeholder="contraseña">
         <input type="submit" name="" value="Ingresar">
     </form>
