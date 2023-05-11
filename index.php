@@ -26,7 +26,7 @@
             session_start();
             if(isset($_SESSION["logueado"]) && $_SESSION["logueado"])
             {
-                echo "<h3> Hola ".$_SESSION["nombre"]."<h3>";
+                echo "<h3> Hola ".$_SESSION["usuario"]."<h3>";
             }else{
                 echo '<div>
                             <form action="loginProcesar.php" method="get" enctype="application/x-www-form-urlencoded">
@@ -70,7 +70,11 @@
                         <th>Numero</th>
                         <th>Imagen</th>
                         <th>Descripcion</th>
-                        <th>Modificar</th>
+                        <?php
+                        if(isset($_SESSION["logueado"]) && $_SESSION["logueado"]){
+                        echo "<th>Modificar</th>";
+                        }
+                        ?>
                     </tr>
                     </thead>
                     <tbody>
@@ -89,8 +93,14 @@
                             <td><?php echo $pokemon['numero']; ?> </td>
                             <td><img width="35px" height="35px" src="imagenes/<?php echo $pokemon['imagen'];?>"> </td>
                             <td><?php echo $pokemon['descripcion']; ?> </td>
-                             <td> <a href="/PokedexWeb2/editarPokemon.php?id=<?php echo $pokemon['idPokemon']; ?>">editar</a>
-                                 <a href="/PokedexWeb2/eliminarPokemon.php?id=<?php echo $pokemon['idPokemon']; ?>">eliminar</a> </td>
+                        <?php
+                        if(isset($_SESSION["logueado"]) && $_SESSION["logueado"]){
+                            echo '<td> 
+                                    <a href="/PokedexWeb2/editarPokemon.php?id='.$pokemon['idPokemon']. '">editar</a>
+                                    <a href="/PokedexWeb2/eliminarPokemon.php?id='. $pokemon['idPokemon'].'">eliminar</a>
+                                    </td>';
+                        }
+                        ?>
                         </tr>
                         <?php
                         }
