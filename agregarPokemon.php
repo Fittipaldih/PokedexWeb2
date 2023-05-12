@@ -1,4 +1,15 @@
 <?php
+include_once ("header.php");
+if(!isset($_SESSION["logueado"]) && !$_SESSION["logueado"])
+{
+header("Location:index.php");
+exit();
+}?>
+
+
+
+
+<?php
 
 
 
@@ -25,6 +36,7 @@ if(isset($_POST["enviar"])){
 
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

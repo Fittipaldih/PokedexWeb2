@@ -11,6 +11,7 @@ if (isset($_GET['usuario']) && isset($_GET['password'])) {
     $result = mysqli_query($conexion, $sql);
 
     if (mysqli_num_rows($result) > 0) {
+
         $_SESSION["logueado"]= true;
         $_SESSION["usuario"] = $usuario;
         $_SESSION["clave"] = $clave;

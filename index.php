@@ -1,5 +1,5 @@
 <?php
- require_once "dataBase.php"
+ require "dataBase.php"
 
 ?>
 
@@ -23,7 +23,7 @@
 </header>
 
 <section class="container-fluid ">
-    <form action="buscarPokemon.php" method="get">
+    <form action="index.php" method="get">
         <div class="row ">
             <div class="col">
                 <input type="text" name="pokemonBuscado" placeholder="Ingrese un nombre" class="form-control">
@@ -35,21 +35,6 @@
     </form>
 </section>
 <section>
-
-    <!--<style>
-        table {
-            border-collapse: collapse;
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid black;
-        }
-        th {
-            background-color: #ccc;
-        }
-    </style>-->
     <br>
     <section>
         <div class="container-fluid">
@@ -71,29 +56,12 @@
                 <tbody>
 
                 <?php
-                $valores= $conexion->query("SELECT * FROM pokemones");
-                //$valores= $query->fetch_assoc();
 
+                if (!isset($_GET["pokemonBuscado"])){
+                    mostrarTodosLosPokemones();
 
-                foreach ($valores as $pokemon) {
-                    ?><tr>
-                    <td><?php
-                        echo '<a href="/PokedexWeb2/detalle.php?id='.$pokemon["idPokemon"].'">'. $pokemon['nombre'].'</a>';
-                        ?> </td>
-                    <td><img width="25px" height="25px" src="imagenes/<?php echo $pokemon['tipo'];?>.png"> </td>
-                    <td><?php echo $pokemon['numero']; ?> </td>
-                    <td><img width="35px" height="35px" src="imagenes/<?php echo $pokemon['imagen'];?>"> </td>
-                    <td><?php echo $pokemon['descripcion']; ?> </td>
-                    <?php
-                    if(isset($_SESSION["logueado"]) && $_SESSION["logueado"]){
-                        echo '<td> 
-                                    <a href="/PokedexWeb2/editarPokemon.php?id='.$pokemon['idPokemon']. '" class="btn btn-outline-primary">Editar</a>
-                                    <a href="/PokedexWeb2/eliminarPokemon.php?id='. $pokemon['idPokemon'].'" class="btn btn-outline-danger">Eliminar</a>
-                                    </td>';
-                    }
-                    ?>
-                    </tr>
-                    <?php
+                } else{
+                    buscarPokemon($_GET["pokemonBuscado"]);
                 }
                 ?>
 
@@ -116,3 +84,65 @@
 
 
 </html>
+
+<?php
+function buscarPokemon($pokemonBuscado)
+{   include ("dataBase.php");
+    $sql = "SELECT * FROM pokemones WHERE `nombre` like '%" . $pokemonBuscado . "%'";
+    $result = $conexion->query($sql);
+    $resultado = $result->fetch_all(MYSQLI_ASSOC);
+    if (mysqli_num_rows($result) > 0) {
+        return mostrarResultado($resultado);
+    }else {
+        echo "<div><p class='h3'>No se encontraron resultados</p></div>";
+        echo mostrarTodosLosPokemones();
+    }
+}
+function mostrarResultado($resultado)
+{
+    foreach ($resultado as $pokemon) {
+        echo "<tr>
+              <td>
+                  <a href='/PokedexWeb2/detalle.php?id=" . $pokemon["idPokemon"] . "'>" . $pokemon['nombre'] . "</a>
+                    </td>
+                    <td><img width='25px' height='25px' src='imagenes/" . $pokemon['tipo'] . ".png'> </td>
+                    <td>" . $pokemon['numero'] . "</td>
+                    <td><img width='35px' height='35px' src='imagenes/" . $pokemon['imagen'] . "'> </td>
+                    <td>" . $pokemon['descripcion'] . "</td>";
+        if (isset($_SESSION["logueado"]) && $_SESSION["logueado"]) {
+            echo '<td> 
+                                    <a href="/PokedexWeb2/editarPokemon.php?id=' . $pokemon['idPokemon'] . '" class="btn btn-outline-primary">Editar</a>
+                                    <a href="/PokedexWeb2/eliminarPokemon.php?id=' . $pokemon['idPokemon'] . '" class="btn btn-outline-danger">Eliminar</a>
+                                    </td>';
+        }
+        echo '
+                    </tr>';
+    }
+}
+
+function mostrarTodosLosPokemones()
+{
+    include ("dataBase.php");
+    $valores= $conexion->query("SELECT * FROM pokemones");
+
+    foreach ($valores as $pokemon) {
+        ?><tr>
+        <td><?php
+            echo '<a href="/PokedexWeb2/detalle.php?id='.$pokemon["idPokemon"].'">'. $pokemon['nombre'].'</a>';
+            ?> </td>
+        <td><img width="25px" height="25px" src="imagenes/<?php echo $pokemon['tipo'];?>.png"> </td>
+        <td><?php echo $pokemon['numero']; ?> </td>
+        <td><img width="35px" height="35px" src="imagenes/<?php echo $pokemon['imagen'];?>"> </td>
+        <td><?php echo $pokemon['descripcion']; ?> </td>
+        <?php
+        if(isset($_SESSION["logueado"]) && $_SESSION["logueado"]){
+            echo '<td> 
+                                    <a href="/PokedexWeb2/editarPokemon.php?id='.$pokemon['idPokemon']. '" class="btn btn-outline-primary">Editar</a>
+                                    <a href="/PokedexWeb2/eliminarPokemon.php?id='. $pokemon['idPokemon'].'" class="btn btn-outline-danger">Eliminar</a>
+                                    </td>';
+        }
+        ?>
+        </tr>
+        <?php
+    }
+}
