@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="429bcb9a-9a7c-4d92-88c0-d6dcc5a186b2" name="Changes" comment="" />
+    <list default="true" id="429bcb9a-9a7c-4d92-88c0-d6dcc5a186b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agregarPokemon.php" beforeDir="false" afterPath="$PROJECT_DIR$/agregarPokemon.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editarPokemon.php" beforeDir="false" afterPath="$PROJECT_DIR$/editarPokemon.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eliminarPokemon.php" beforeDir="false" afterPath="$PROJECT_DIR$/eliminarPokemon.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loginProcesar.php" beforeDir="false" afterPath="$PROJECT_DIR$/loginProcesar.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,9 +33,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/xampp/htdocs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -39,6 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683672145351</updated>
       <workItem from="1683672147018" duration="49000" />
+      <workItem from="1683849403756" duration="1640000" />
     </task>
     <servers />
   </component>
