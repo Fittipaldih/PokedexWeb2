@@ -22,22 +22,18 @@ $conexion->close();
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <nav class="navbar navbar-expand-lg  ">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="imagenes/logoPokedex.png" alt="logo" width="700" height="110">
-            </a>
-        </div>
-    </nav>
+    <?php
+    include_once ("header.php");
+    ?>
     <br>
 
-    <div class="container">
-        <div class="row">
+    <div class="container d-flex justify-content-center">
+        <div class="row ">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <?php
-                        echo   '<img class="img-fluid rounded-start" width="300" height="300" src="imagenes/' . $resultado[0]["imagen"] . '">';
+                        echo   '<img class="img-fluid rounded-start" src="imagenes/' . $resultado[0]["imagen"] . '">';
                         ?>
                         </div>
                     <div class="col-md-8">

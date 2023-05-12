@@ -10,11 +10,11 @@ function eliminarPokemon($id)
     $query->bind_param('i', $id);
     $query->execute();
     $conexion->close();
-    echo "Pokemon con id " . $id . " eliminanado correctamente" ;
+
+    header("Location:index.php");
 
 }
+
     eliminarPokemon($id);
-?>
-<br>
-<br>
-<a href="index.php">Volver al inicio</a>
+
+
