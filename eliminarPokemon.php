@@ -1,11 +1,10 @@
 <?php
-session_start();
-var_dump($_SESSION);
-if(!isset($_SESSION["logueado"])){
-    header("location:index.php");
-}
-?>
-
+include_once ("header.php");
+if(!isset($_SESSION["logueado"]) && !$_SESSION["logueado"])
+{
+    header("Location:index.php");
+    exit();
+}?>
 
 <?php
 
