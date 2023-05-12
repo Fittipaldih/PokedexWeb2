@@ -60,6 +60,10 @@ if(isset($_POST["enviar"])){
                 <input class="form-check-input" type="radio" name="tipo" value="planta" id="tipoPlanta">
                 <label class="form-check-label" for="tipoPlanta">Planta</label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipo" value="electrico" id="tipoElectrico">
+                <label class="form-check-label" for="tipoElectrico">Eléctrico</label>
+            </div>
         </div>
         <div class="form-group">
             <label for="numero">Nuevo número:</label>
