@@ -1,4 +1,13 @@
 <?php
+session_start();
+var_dump($_SESSION);
+if(!isset($_SESSION["logueado"])){
+    header("location:index.php");
+}
+?>
+
+
+<?php
 $id=$_GET["id"];
 function editarPokemon($nombre, $tipo, $numero, $imagen, $descripcion, $id){
 
